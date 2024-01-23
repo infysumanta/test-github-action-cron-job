@@ -4,13 +4,18 @@ on:
   # Triggers the workflow every 5 minutes
   schedule:
     - cron: "*/5 * * * *"
+  # Allows manual triggering of the workflow from GitHub's UI
+  workflow_dispatch:
 
 jobs:
   request:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send request to google.com
+      - name: Send request to sumantakabiraj.com
+        id: request
         run: |
           response=$(curl -s https://sumantakabiraj.com/)
           echo "::set-output name=response::${response}"
+      - name: Print the response
+        run: echo "The response was - ${{ steps.request.outputs.response }}"

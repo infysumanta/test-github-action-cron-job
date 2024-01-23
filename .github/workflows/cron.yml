@@ -15,7 +15,9 @@ jobs:
       - name: Send request to sumantakabiraj.com
         id: request
         run: |
-          response=$(curl -s https://sumantakabiraj.com/)
-          echo "::set-output name=response::${response}"
+          response=$(curl -s -I https://sumantakabiraj.com/)
+          status_code=$(echo "$response" | grep HTTP/1.1 | awk '{print $2}')
+          echo "::set-output name=status_code::${status_code}"
       - name: Print the response
-        run: echo "The response was - ${{ steps.request.outputs.response }}"
+        run: |
+          echo "The status code was - ${{ steps.request.outputs.status_code }}"

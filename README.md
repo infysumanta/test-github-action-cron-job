@@ -1,0 +1,1 @@
+[![Sumanta Request Cron Job](https://github.com/infysumanta/test-github-action-cron-job/actions/workflows/cron.yml/badge.svg)](https://github.com/infysumanta/test-github-action-cron-job/actions/workflows/cron.yml)
